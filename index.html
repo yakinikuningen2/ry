@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#181818">
+  <title>勝手に略すな｜ランダム略語ジェネレーター</title>
+  <meta name="description" content="長い名前に、勝手なあだ名を。好きな言葉を入れるだけで、意味不明だけど微妙にそれっぽい略語をランダム生成。気に入ったらコピーしてXでシェア。登録不要・無料。">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ja_JP">
+  <meta property="og:site_name" content="勝手に略すな">
+  <meta property="og:title" content="勝手に略すな｜その名前、勝手に略します。">
+  <meta property="og:description" content="正しさはさておき、ちょっと呼びたくなる。言葉を入れて、偶然の略語をつくろう。">
+  <meta property="og:image" content="/assets/ogp.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="勝手に略すな。その名前、勝手に略します。ポケットモンスターをポモターに。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="勝手に略すな｜ランダム略語ジェネレーター">
+  <meta name="twitter:description" content="意味不明だけど、微妙にそれっぽい。偶然の略語をつくろう。">
+  <meta name="twitter:image" content="/assets/ogp.png">
+  <link rel="icon" href="./assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script type="module" src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#word">入力へスキップ</a>
+  <header class="site-header wrap">
+    <h1><a class="brand" href="./"><span class="brand-mark" aria-hidden="true">略</span>勝手に略すな。</a></h1>
+  </header>
+
+  <main class="wrap">
+    <section class="generator" aria-label="略語をつくる">
+      <form id="generator-form" novalidate>
+        <div class="field-heading"><label for="word">略したい言葉</label></div>
+        <div class="input-row">
+          <div class="word-field"><input id="word" type="text" autocomplete="off" aria-describedby="form-error" enterkeyhint="go"><button id="clear-input" class="clear-input" type="button" aria-label="入力をクリア" title="入力をクリア" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button></div>
+          <button class="button button-dark generate-button" type="submit">略す</button>
+        </div>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+      </form>
+    </section>
+
+    <section id="result-panel" class="result-panel" aria-label="生成結果" hidden>
+      <div id="result-content" class="result-content" aria-live="polite" aria-atomic="true">
+        <p class="original-word">「<span id="original-word"></span>」</p>
+        <p class="result-prefix">今日からこれは</p>
+        <p class="result-word" id="result-word"></p>
+        <p class="result-suffix">と呼んでください。</p>
+        <dl class="stats"><div><dt>省略前</dt><dd><span id="before-count"></span><span class="stat-unit">文字</span></dd></div><div><dt>省略後</dt><dd><span id="after-count"></span><span class="stat-unit">文字</span></dd></div><div><dt>省略率</dt><dd><span id="reduction-rate"></span><span class="stat-unit">%</span></dd></div></dl>
+      </div>
+      <div id="result-actions" class="result-actions" hidden>
+        <button type="button" id="regenerate" class="button button-outline" aria-label="もう一度略す"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7v5h-5M4 17v-5h5M5.5 8a7 7 0 0 1 11.6-3L20 8M4 16l2.9 3A7 7 0 0 0 18.5 16"/></svg>もう一度</button>
+        <button type="button" id="copy-result" class="button button-outline" aria-label="結果をコピー"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="8" width="12" height="12" rx="1"/><path d="M15 8V4H4v11h4"/></svg>コピー</button>
+        <a id="share-x" class="button button-dark" href="https://x.com/intent/post" target="_blank" rel="noopener noreferrer" aria-label="結果をXで共有（新しいタブで開きます）"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 3h5l11 18h-5L4 3ZM20 3 4 21"/></svg>Xで共有</a>
+        <button type="button" id="share-discord" class="button button-outline" title="Discord用の共有文をコピー" aria-label="Discordで共有（共有文をコピー）">Discordで共有</button>
+      </div>
+      <p id="result-notice" class="result-note" role="status" hidden></p>
+    </section>
+
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+  <noscript><p class="noscript">略語を生成するにはJavaScriptを有効にしてください。入力内容は外部に送信されません。</p></noscript>
+</body>
+</html>
